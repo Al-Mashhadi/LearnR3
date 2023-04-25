@@ -1,3 +1,6 @@
+Sofie Kejlberg Al-Mashhadi
+Clinical Epidemiology
+
 TODO: Add more to the title of your project here
 
 # LearnR3:
