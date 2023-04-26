@@ -90,8 +90,7 @@ nhanes_small %>%
 
 # 1. BMI between 20 and 40 with diabetes
 nhanes_small %>%
-    # Format should follow: variable >= number or character
-    filter(bmi >= 20 & bmi <= 40 & diabtes == "Yes")
+    filter(bmi >= 20 & bmi <= 40 & diabetes == "Yes")
 
 # Pipe the data into mutate function and:
 nhanes_modified <- nhanes_small %>% # Specifying dataset
@@ -103,6 +102,29 @@ nhanes_modified <- nhanes_small %>% # Specifying dataset
     )
 
 nhanes_modified
+
+
+# Creating summary statistics
+
+nhanes_small %>%
+    summarise(max_bmi = max(bmi, na.rm = T),
+              min_bmi = min(bmi, na.rm = T))
+
+nhanes_small %>%
+    filter(!is.na(diabetes)) %>%
+    group_by(diabetes) %>%
+    summarise(mean_age = mean(age, na.rm = T),
+              mean_bmi = mean(bmi, na.rm = T)) %>%
+    ungroup()
+
+# Saving data
+
+readr::write_csv(nhanes_small, here::here("data/nhanes_small.csv"))
+
+
+
+
+
 
 
 
