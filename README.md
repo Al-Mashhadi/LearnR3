@@ -1,6 +1,8 @@
 Sofie Kejlberg Al-Mashhadi
 Clinical Epidemiology
 
+Added this sentence locally
+
 #This will be used for testing out Git
 
 TODO: Add more to the title of your project here
