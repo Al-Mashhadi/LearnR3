@@ -1,14 +1,50 @@
-
-summary(airquality)
-
-mean(2:6)
-
-# Loading Packages --------------------------------------------------------
+# Load packages
 
 library(tidyverse)
+library(NHANES)
+
+# Looking at data
+glimpse(NHANES)
+
+# Selecting columns
+select(NHANES, Age)
+select(NHANES, Age, Weight, BMI)
+select(NHANES, -HeadCirc)
+select(NHANES, starts_with("BP"))
+select(NHANES, ends_with("Day"))
+select(NHANES, contains("Age"))
+
+# Creating smaller NHANES dataset
+nhanes_small <- select(
+  NHANES, Age, Gender, BMI, Diabetes,
+  PhysActive, BPSysAve, BPDiaAve, Education
+)
+
+# Renaming columns
+nhanes_small <- rename_with(
+  nhanes_small,
+  snakecase::to_snake_case
+)
+
+# Renaming specific columns
+nhanes_small <- rename(nhanes_small, sex = gender)
+
+# Trying out the pipe
+colnames(nhanes_small)
+
+nhanes_small %>%
+  select(phys_active) %>%
+  rename(physically_active = phys_active)
 
 
-#This will be used for testing out Git
+nhanes_small %>%
+  select(bp_sys_ave, education)
 
-#a new conflict
+nhanes_small %>%
+  rename(
+    bp_sys = bp_sys_ave,
+    bp_dia = bp_dia_ave
+  )
 
+nhanes_small %>%
+  select(bmi, contains("age"))
