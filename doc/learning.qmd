@@ -50,8 +50,8 @@ nhanes_small %>%
     rename("Diabetes Status" = diabetes, 
            "Education" = education, 
            "Mean Age" = mean_age, 
-           "Mean BMI" = mean_bmi)
-    
+           "Mean BMI" = mean_bmi) %>% 
+ knitr::kable(caption = "Mean values of Age and BMI for each education and diabetes status.")
 
 #| echo: false
 ```
@@ -61,6 +61,11 @@ nhanes_small %>%
 
 ```
 
-![Female](images/SILfemme30.png)
+Blue female in @fig-blue-female!
 
+![Female](images/SILfemme30.png){#fig-blue-female width="20%" height="20%"}
+
+```{r}
+
+```
 
